@@ -93,6 +93,12 @@ Character Constant: 'A', 'z' (সিঙ্গেল কোটেশনের ভ
 
 উদাহরণ: "Mohammad", "Hello World", "C++ Programming" ইত্যাদি।
 
+string str = "He said, \"C++ is awesome!\"\nLet's learn it.";
+cout << str << endl;
+
+string str = R"delimiter(He said, "C++ is awesome!" )"delimiter";
+cout << str << endl;
+
 
 ৫. Operators (অপারেটর)
 গাণিতিক বা লজিক্যাল হিসাব-নিকাশ করার জন্য যেসব বিশেষ চিহ্ন বা সিম্বল ব্যবহার করা হয়, সেগুলোকে অপারেটর বলে।
