@@ -38,10 +38,33 @@ int AGE = 40;
 অবশ্যই আগে বলে দিতে হবে। C++ হলো একটি Statically Typed ল্যাঙ্গুয়েজ। এর মানে হলো কোনো ভেরিয়েবল তৈরি করার সময় কম্পাইলারকে আগেই গ্যারান্টি দিয়ে বলতে হবে 
 যে এই ভেরিয়েবলের ভেতর কী ধরণের ডাটা (যেমন: পূর্ণসংখ্যা, দশমিক সংখ্যা, নাকি টেক্সট) রাখা হবে।
 
-int myNumber = 10;       // পূর্ণসংখ্যার জন্য int
-double mySalary = 550.50; // দশমিকের জন্য double
-char myGrade = 'A';       // একটি অক্ষরের জন্য char
-string myName = "Mohammad"; // টেক্সটের জন্য string
+
+#include <iostream>
+#include <string> // string ব্যবহারের জন্য এই হেডার ফাইল জরুরি
+
+using namespace std;
+
+int main() {
+    int myNumber = 10;    
+    float height = 5.2f;
+    double mySalary = 550.50;
+    char myGrade = 'A';     
+    string myName = "Mohammad";
+
+    cout << "Number: " << myNumber << endl;
+    cout << "Height: " << height << " ft" << endl;
+    cout << "Salary: " << mySalary << endl;
+    cout << "Grade: " << myGrade << endl;
+    cout << "Name: " << myName << endl;
+
+    return 0;
+}
+
+
+
+
+
+
 
 
 আধুনিক C++ ট্রিক (auto কিউওয়ার্ড):
@@ -53,6 +76,48 @@ auto x = 100;      // কম্পাইলার নিজে থেকেই �
 auto y = "Hello";  // কম্পাইলার নিজে থেকেই একে string বানিয়ে নেবে
 
 
+auto x = 10;          // কম্পাইলার বুঝে নেয় এটি int
+auto height = 5.211f; // কম্পাইলার বুঝে নেয় এটি float
+auto grade = 'A';     // কম্পাইলার বুঝে নেয় এটি char
+auto name = "Abdullah"; // কম্পাইলার বুঝে নেয় এটি const char* (String)
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    auto x = 10;        
+    auto height = 5.211f; 
+    auto grade = 'A';    
+    auto name = "Abdullah"; 
+
+    // cout দিয়ে প্রিন্ট করা হচ্ছে
+    cout << "Number (x) : " << x << endl;
+    cout << "Height     : " << height << " ft" << endl;
+    cout << "Grade      : " << grade << endl;
+    cout << "Name       : " << name << endl;
+
+    return 0;
+}
+
+
+কখন auto ব্যবহার করা বেশি সুবিধাজনক?
+বড় বড় বা জটিল ডেটা টাইপের ক্ষেত্রে (যেমন এসটিএল ইটারেটর বা টেমপ্লেট) কোড ছোট ও পরিষ্কার রাখার জন্য auto আশীর্বাদের মতো কাজ করে। যেমন:
+
+
+// auto না ব্যবহার করলে অনেক বড় টাইপ লিখতে হতো:
+// std::vector<std::string>::iterator it = names.begin();
+
+// auto ব্যবহার করলে খুব সহজ:
+auto it = names.begin();
+
+হেডার ফাইল হিসেবে <iostream> এবং <string> যুক্ত করা হয়েছে।
+
+auto কিওয়ার্ডগুলোর কারণে কম্পাইলার নিজে থেকেই x-কে int, height-কে float, grade-কে char এবং name-কে string হিসেবে ধরে নিয়েছে।
+
+cout এবং << অপারেটর ব্যবহার করে খুব সহজেই কনসোলে মানগুলো প্রিন্ট করা হয়েছে।
 
 
 
@@ -63,7 +128,8 @@ C++ ল্যাঙ্গুয়েজে Token (টোকেন) হলো এ�
 C++ ল্যাঙ্গুয়েজে টোকেন মূলত ৬ প্রকার
 
 ১. Keywords (কীওয়ার্ড)
-এগুলো হলো C++ ল্যাঙ্গুয়েজের নিজস্ব কিছু সংরক্ষিত শব্দ (Reserved Words), যেগুলোর নির্দিষ্ট অর্থ কম্পাইলারের কাছে আগে থেকেই ঠিক করা আছে। এগুলোকে নিজের মতো বা ভেরিয়েবলের নাম হিসেবে ব্যবহার করতে পারবেন না।
+এগুলো হলো C++ ল্যাঙ্গুয়েজের নিজস্ব কিছু সংরক্ষিত শব্দ (Reserved Words), যেগুলোর নির্দিষ্ট অর্থ কম্পাইলারের কাছে আগে থেকেই ঠিক করা আছে।
+এগুলোকে নিজের মতো বা ভেরিয়েবলের নাম হিসেবে ব্যবহার করতে পারবেন না।
 
 উদাহরণ: int, float, if, else, for, while, return, class, public ইত্যাদি।
 
@@ -587,3 +653,41 @@ int num1: এটি একটি সাধারণ ভেরিয়েবল য
 
 const int width: এটি একটি "ধ্রুবক" বা Constant। const যুক্ত করার মানে হলো, 
 কম্পিউটারকে বলা হসছে যে width এর মান পুরো প্রোগ্রামে সব সময় ১৫-ই থাকবে, এটি কেউ ভুল করেও পরিবর্তন করতে পারবে না।
+
+
+
+#include <iostream>
+#include <string>
+#include <iomanip> // setw, left, right, fixed, setprecision এর জন্য
+
+using namespace std;
+
+int main() {
+    // সি-স্টাইল char array এর বদলে আধুনিক std::string ব্যবহার করা হলো
+    string name = "Abdullah";
+    string address = "Gongachora, Rangpur";
+    string subject = "Programming";
+    char grade = 'A';
+    string bloodGroup = "B+";
+    int age = 30;
+    bool married = false;
+    float height = 5.211f;
+    string language = "Bengali, English";
+    double account_balance = 12.1234123;
+    
+    cout << "--------Student Information--------" << endl;
+    
+    // setw(12) দিয়ে লেবেল এবং setw(10) দিয়ে ভ্যালুর স্পেস কন্ট্রোল করা হয়েছে
+    cout << left << setw(12) << "Name:" << " | " << right << setw(10) << name << endl;
+    cout << left << setw(12) << "Age:" << " | " << right << setw(10) << age << endl;
+    cout << left << setw(12) << "Height:" << " | " << right << setw(10) << fixed << setprecision(1) << height << endl;
+    cout << left << setw(12) << "Blood Group:" << " | " << right << setw(10) << bloodGroup << endl;
+    cout << left << setw(12) << "Address:" << " | " << right << setw(10) << address << endl;
+    cout << left << setw(12) << "Grade:" << " | " << right << setw(10) << grade << endl;
+    cout << left << setw(12) << "Subject:" << " | " << right << setw(10) << subject << endl;
+    cout << left << setw(12) << "Language:" << " | " << right << setw(10) << language << endl;
+    cout << left << setw(12) << "Account:" << " | " << right << setw(10) << fixed << setprecision(2) << account_balance << endl;
+    cout << left << setw(12) << "Married:" << " | " << right << setw(10) << (married ? "Yes" : "False") << endl;
+    
+    return 0;
+}
