@@ -691,3 +691,39 @@ int main() {
     
     return 0;
 }
+
+
+#include <iostream>
+#include <iomanip> // setw এবং alignment এর জন্য
+#include <string>  // স্ট্রিং রিপিট করার জন্য (string(count, char))
+using namespace std;
+
+int main(){
+    string myName = "Abdullah";
+    int age = 30;
+    float height = 5.220f;
+    double accountBalance = 12.124521142;
+    char grade = 'A';
+    string bloodGroup = "B+";
+    string address = "Gongachora, Rangpur";
+    string subject = "Programming";
+    bool married = false;
+    
+    cout << string(35, '-') << "\n";
+    cout << "      STUDENT INFORMATION      \n";
+    cout << string(35, '-') << "\n"; // টাইটেলের নিচে একটি বর্ডার যোগ করা হলো
+
+    cout << left << setw(14) << "Name:" << "|" << right << setw(15) << myName << endl;
+    cout << left << setw(14) << "Age:" << "|" << right << setw(15) << age << endl;
+    cout << left << setw(14) << "Height:" << "|" << right << setw(15) << fixed << setprecision(1) << height << endl;
+    cout << left << setw(14) << "Blood Group:" << "|" << right << setw(15) << bloodGroup << endl;
+    cout << left << setw(14) << "Address:" << "|" << right << setw(15) << address << endl;
+    cout << left << setw(14) << "Grade:" << "|" << right << setw(15) << grade << endl;
+    cout << left << setw(14) << "Subject:" << "|" << right << setw(15) << subject << endl;
+    cout << left << setw(14) << "Account:" << "|" << right << setw(15) << fixed << setprecision(2) << accountBalance << endl;
+    cout << left << setw(14) << "Married:" << "|" << right << setw(15) << (married ? "Yes" : "False") << endl;
+    
+    cout << string(35, '-') << "\n"; // সবার নিচে শেষ বর্ডার
+
+    return 0;
+}
