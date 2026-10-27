@@ -99,6 +99,35 @@ Encapsulation: ডাটা এবং কোডকে একসাথে এক�
 ৪. সি++ কেন শিখবেন? (Why Learn C++?)
 Programming Logic: সি++ শিখলে প্রোগ্রামিংয়ের পেছনের আসল বিজ্ঞান (মেমোরি কীভাবে কাজ করে, ডাটা কীভাবে জমা হয়) খুব ভালোভাবে বোঝা যায়।
 
-Competitive Programming & DSA: যদি হ্যাকারর‍্যাঙ্ক বা কোডফোর্সেস-এ প্রবলেম সলভিং করতে চান, তবে প্রতিযোগিতামূলক প্রোগ্রামিংয়ের জন্য সি++ হলো এক নাম্বার পছন্দ।
 
-ক্যারিয়ারের সুযোগ: গেম ডেভেলপার, সিস্টেম ইঞ্জিনিয়ার এবং এমবেডেড সিস্টেম (রোবোটিক্স) লাইনে সি++ ডেভেলপারদের স্যালারি অনেক বেশি।
+
+#include <iostream>
+    
+#include <string> // প্রয়োজনে অন্যান্য স্ট্যান্ডার্ড হেডার ফাইল
+    
+int main() {
+    // স্মার্ট ও প্রফেশনাল সিনট্যাক্স কাঠামো
+    
+    std::string message = "System Architecture & Backend Learning";
+    
+    std::cout << "Loading: " << message << "\n";
+    
+    return 0;
+}
+
+
+#include <iostream>
+#include <string>
+
+int main() {
+  std::string name = "Abdullah";
+  int age = 30;
+
+  std::cout << "Name: " << name <<std::endl;
+  std::cout << "Age: " << age <<std::endl;
+
+  return 0;
+}
+
+int (ইনটিজার)
+int হলো C++ ভাষার নিজস্ব প্রিমিয়ার বা বিল্ট-ইন ডেটা টাইপ। এটি কোনো স্ট্যান্ডার্ড লাইব্রেরি (std) থেকে আসেনি। তাই int-এর আগে কখনো std:: বসে না।
