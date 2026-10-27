@@ -1,14 +1,60 @@
-#include <iostream>
+ #include <iostream>
 
-using namespace std;
+// ==========================================
+// C++ Keywords & Basic Structure Note
+// ==========================================
 
-int main()
-{
-    cout << "Hello world!" << endl;
-    //singal line //
-    //multi-line */  */
+int main() {
+    // 1. Standard Output Example (using \n instead of std::endl for performance)
+    std::cout << "Hello world!\n";
+    
+    // Comments syntax:
+    // - Single-line comment
+    /* 
+       - Multi-line comment 
+    */
+
+    // 2. Conditional Statement Example with Keywords (int, if, else, return)
+    int age = 20; 
+
+    if (age >= 18) {
+        std::cout << "Adult\n";
+    } else {
+        std::cout << "Minor\n";
+    }
+
     return 0;
 }
+
+
+
+# C++ Keywords (কিওয়ার্ড) ও বেসিক সিনট্যাক্স নোট
+
+## কিওয়ার্ড কী?
+সি++ ল্যাঙ্গুয়েজে **Keyword** হলো এমন কিছু নির্দিষ্ট শব্দ যা ওই ভাষার ব্যাকরণ বা সিনট্যাক্স তৈری করতে ব্যবহৃত হয়।
+এগুলো কম্পাইলারের কাছে আগে থেকেই রিজার্ভ বা সংরক্ষিত থাকে। নিজের মতো করে এই শব্দগুলোর অর্থ বা কাজ পরিবর্তন করা যায় না।
+
+### কিওয়ার্ডের মূল নিয়মসমূহ:
+1. **ছোট হাতের অক্ষর:** সি++ এর সব কিউওয়ার্ড সবসময় ছোট হাতের অক্ষরে (Lowercase) লিখতে হয় (যেমন: `int`, `if`, `else`)।
+2. **ভেরিয়েবলের নাম হিসেবে নিষিদ্ধ:** কোনো কিওয়ার্ডকে কখনোই ভেরিয়েবল, ফাংশন বা ক্লাসের নাম (`Identifier`) হিসেবে ব্যবহার করা যাবে না।
+
+---
+
+## কোডে কিওয়ার্ড চেনার উপায় (উদাহরণ):
+```cpp
+int age = 20; 
+
+if (age >= 18) {
+    std::cout << "Adult\n";
+} else {
+    std::cout << "Minor\n";
+}
+
+
+
+Keywords: int, if, else, return (এগুলোর কাজ কম্পাইলারের কাছে আগে থেকেই জানা)।
+
+
 
 
 সি++ (C++) ল্যাঙ্গুয়েজে Keyword (কিওয়ার্ড) হলো এমন কিছু নির্দিষ্ট শব্দ যা ওই ভাষার ব্যাকরণ বা সিনট্যাক্স তৈরিতে ব্যবহৃত হয়।
@@ -49,8 +95,8 @@ Type Casting Operators	- static_cast, dynamic_cast, const_cast, reinterpret_cast
 Templates & Namespaces	- template, typename, namespace, using
 
 
-Modern C++ (C++11, C++17, C++20, C++23) — ৯৫টি পর্যন্ত কিওয়ার্
-    ড
+Modern C++ (C++11, C++17, C++20, C++23) — ৯৫টি পর্যন্ত কিওয়ার্ড 
+    
 মডার্ন C++ এ আরও শক্তিশালী মেমোরি কন্ট্রোল ও টাইপ সেফটির জন্য নতুন নতুন কিওয়ার্ড যুক্ত করা হয়েছে:
 
 C++11-এ যোগ হওয়া গুরুত্বপূর্ণ কিওয়ার্ড: auto (মডার্ন অর্থে), nullptr, constexpr, decltype, thread_local, noexcept, static_assert, enum class
@@ -86,28 +132,3 @@ concept          float            reinterpret_cast typeid
 const            for              requires         typename
 const_cast       friend           return           typedef
 constexpr        goto             short            union
-
-
-    
-    
-
-#include <iostream>
-using namespace std;
-
-int main() {
-    int age = 20; 
-    
-    if (age >= 18) {
-        cout << "Adult" << endl;
-    } else {
-        cout << "Minor" << endl;
-    }
-    
-    return 0;
-}
-
-
-এই কোডের ভেতরে কিউওয়ার্ড কোনগুলো?
-এখানে int, if, else, এবং return হলো Keywords। কারণ এগুলোর কাজ সি++ কম্পাইলারের কাছে আগে থেকেই মুখস্থ। 
-আর age হলো Identifier (ভেরিয়েবল), কারণ এই নামটা নিজে দেওয়া হয়ছে।
-
