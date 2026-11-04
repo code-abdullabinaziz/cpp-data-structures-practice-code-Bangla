@@ -5,8 +5,10 @@ C++ এর ডাটা টাইপগুলোকে প্রধানত ৩
 
 ১. Built-in (Primitive) Data Types
 
-সি++ (C++) ল্যাঙ্গুয়েজেও Built-in Data Types বা Primitive Data Types-এর মূল ধারণাটি সি (C) ল্যাঙ্গুয়েজের মতোই—অর্থাৎ এগুলো হলো ল্যাঙ্গুয়েজের একদম নিজস্ব, বিল্ট-ইন এবং মৌলিক ডাটা টাইপ যা কম্পাইলার সরাসরি চিনতে পারে।
-তবে সি++ ল্যাঙ্গুয়েজ যেহেতু সি-এর চেয়ে কিছুটা আধুনিক, তাই এখানে প্রাইমিটিভ ডাটা টাইপের সংখ্যা সি-এর চেয়ে বেশি এবং এর কাজের পরিধিও কিছুটা বড়। সি++-এ কোনো এক্সট্রা হেডার ফাইল ছাড়াই এই মৌলিক টাইপগুলো সরাসরি ব্যবহার করা যায়।
+সি++ (C++) ল্যাঙ্গুয়েজেও Built-in Data Types বা Primitive Data Types-এর মূল ধারণাটি সি (C) ল্যাঙ্গুয়েজের মতোই—অর্থাৎ 
+এগুলো হলো ল্যাঙ্গুয়েজের একদম নিজস্ব, বিল্ট-ইন এবং মৌলিক ডাটা টাইপ যা কম্পাইলার সরাসরি চিনতে পারে।
+তবে সি++ ল্যাঙ্গুয়েজ যেহেতু সি-এর চেয়ে কিছুটা আধুনিক, তাই এখানে প্রাইমিটিভ ডাটা টাইপের সংখ্যা সি-এর চেয়ে
+বেশি এবং এর কাজের পরিধিও কিছুটা বড়। সি++-এ কোনো এক্সট্রা হেডার ফাইল ছাড়াই এই মৌলিক টাইপগুলো সরাসরি ব্যবহার করা যায়।
 
 
 ১. Integer Type (পূর্ণসংখ্যা)
@@ -90,6 +92,41 @@ long: বড় সংখ্যার জন্য। (যেমন: long long int 
 
 ১. যখন মেমোরি নিয়ে খুব বেশি চিন্তা করার দরকার নেই, তখন দশমিকের জন্য double ব্যবহার করাই সবচেয়ে নিরাপদ।
 ২. যদি জানা হয় যে কোনো মান কখনোই নেগেটিভ হবে না (যেমন: বয়স বা রোল নম্বর), তবে unsigned int ব্যবহার করা বুদ্ধিমানের কাজ।
+
+
+সি++ এ ভ্যারিয়েবলের প্রকারভেদ
+   
+সি++ এ বিভিন্ন ধরনের ভ্যারিয়েবল এবং ডেটা টাইপ রয়েছে:
+
+প্রাথমিক ডেটা টাইপ:
+
+int: পূর্ণসংখ্যা (যেমন: 5, -10)
+   
+float: দশমিক সংখ্যা (যেমন: 3.14)
+   
+double: দ্বিগুণ সঠিকতা সম্পন্ন দশমিক সংখ্যা
+
+char: একটি অক্ষর (যেমন: 'A')
+   
+bool: সত্য বা মিথ্যা (true/false) মান ধারণ করে
+   
+কম্পোজিট ডেটা টাইপ:
+
+string: অক্ষরের একটি সেট (যেমন: "Hello, World!")
+   
+array: একই ধরনের ভ্যালুগুলোর একটি সংগ্রহ (যেমন: int numbers[5] = {1, 2, 3, 4, 5};)
+
+structure: বিভিন্ন ডেটা টাইপ একত্রে ধারণ করে।
+
+ডাইনামিক ভ্যারিয়েবল:
+
+ডাইনামিক মেমোরি এলোকেশনের মাধ্যমে ভ্যারিয়েবল তৈরি করা হয়, যেমন new এবং delete ব্যবহার করে।
+
+Copied from SATT ACADEMY. Visit us at: https://sattacademy.com
+
+
+
+
    
 // #include <iostream>
 // using namespace std;
@@ -107,6 +144,43 @@ long: বড় সংখ্যার জন্য। (যেমন: long long int 
 //     cout << "Size of long long: " << sizeof(long long) << " byte" << endl;
 //     return 0;
 // }
+
+
+
+#include <iostream>
+int main()
+{
+    std::cout << "Size of char: " << sizeof(char) << " byte" << std::endl;
+    std::cout << "Size of int: " << sizeof(int) << " byte" << std::endl;
+    std::cout << "Size of float: " << sizeof(float) << " byte" << std::endl;
+    std::cout << "Size of double: " << sizeof(double) << " byte" << std::endl;
+    std::cout << "Size of short: " << sizeof(short) << " byte" << std::endl;
+    std::cout << "Size of long: " << sizeof(long) << " byte" << std::endl;
+    std::cout << "Size of long double: " << sizeof(long double) << " byte" << std::endl;
+    std::cout << "Size of bool: " << sizeof(bool) << " byte" << std::endl;
+    std::cout << "Size of long long: " << sizeof(long long) << " byte" << std::endl;
+    
+    return 0;
+}
+
+
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Size of char: " << sizeof(char) << " byte\n";
+    std::cout << "Size of int: " << sizeof(int) << " byte\n";
+    std::cout << "Size of float: " << sizeof(float) << " byte\n";
+    std::cout << "Size of double: " << sizeof(double) << " byte\n";
+    std::cout << "Size of short: " << sizeof(short) << " byte\n";
+    std::cout << "Size of long: " << sizeof(long) << " byte\n";
+    std::cout << "Size of long double: " << sizeof(long double) << " byte\n";
+    std::cout << "Size of bool: " << sizeof(bool) << " byte\n";
+    std::cout << "Size of long long: " << sizeof(long long) << " byte\n";
+    
+    return 0;
+}
 
 
 // #include <iostream>
@@ -138,7 +212,35 @@ long long           8 bytes
 float               4 bytes
 double              8 bytes
 bool                1 byte
+
+
+#include <iostream>
+#include <iomanip>  
+
+int main()
+{
+    std::cout << std::left << std::setw(20) << "Data Type" << "Size (in bytes)\n";
+    std::cout << "------------------------------------------\n";
+    std::cout << std::setw(20) << "char" << sizeof(char) << " byte\n";
+    std::cout << std::setw(20) << "bool" << sizeof(bool) << " byte\n";
+    std::cout << std::setw(20) << "short" << sizeof(short) << " bytes\n";
+    std::cout << std::setw(20) << "int" << sizeof(int) << " bytes\n";
+    std::cout << std::setw(20) << "float" << sizeof(float) << " bytes\n";
+    std::cout << std::setw(20) << "long" << sizeof(long) << " bytes\n";
+    std::cout << std::setw(20) << "double" << sizeof(double) << " bytes\n";
+    std::cout << std::setw(20) << "long long" << sizeof(long long) << " bytes\n";
+    std::cout << std::setw(20) << "long double" << sizeof(long double) << " bytes\n";
+    
+    return 0;
+}
+
+
+
+
 ------------------------------------------
+
+
+
 // #include <iostream>
 // #include <iomanip>
 // #include <string>
@@ -153,6 +255,23 @@ bool                1 byte
 //     return 0;
 // }
 
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+int main() {
+  std::cout << std::left << std::setw(10) << "Name" << std::left << std::setw(10) << "ID" << "Number\n";
+  std::cout << std::left << std::setw(10) << "Abdullah" << std::setw(10) << 2389 << "01745677826\n";
+  std::cout << std::left << std::setw(10) << "Aziz" << std::setw(10) << 2395 << "01745677826\n";
+  std::cout << std::left << std::setw(10) << "Ebny" << std::setw(10) << 2958 << "01745677826\n";
+  std::cout << std::left << std::setw(10) << "Arman" << std::setw(10) << 2354 << "01745677826\n";
+  std::cout << std::left << std::setw(10) << "Rifat" << std::setw(10) << 2395 << "01745677826\n";
+  return 0;
+}
+
+   
+
 ৪টি ঘর ব্যবহার হয়েছে "Name" অক্ষরগুলোর জন্য।
 
 ৬টি ঘর খালি (Space) রয়ে গেছে।
@@ -166,7 +285,7 @@ bool                1 byte
 [N][a][m][e][ ][ ][ ][ ][ ][ ]
 
 সি++ এ setw(n) শুধুমাত্র তার পরবর্তী একটি আইটেমকে নিয়ন্ত্রণ করে। একবার সেই আইটেমটি প্রিন্ট হয়ে গেলে setw এর ক্ষমতা শেষ হয়ে যায়। 
-তাই পরবর্তী স্ট্রিং বা ডাটাকে যদি তুমি আবার নির্দিষ্ট দূরত্বে পাঠাতে চাও, তবে তোমাকে নতুন করে আবার setw() লিখতে হবে।
+তাই পরবর্তী স্ট্রিং বা ডাটাকে যদি  আবার নির্দিষ্ট দূরত্বে পাঠাতে, তবে নতুন করে আবার setw() লিখতে হবে।
 
 cout << left << setw(10) << "Name" 
      << left << setw(10) << "ID" 
@@ -178,6 +297,188 @@ cout << left << setw(10) << "Name"
 
 "Number" এর জন্য কোনো নির্দিষ্ট ঘর বরাদ্দ নেই, সে শুধু লেখাটি প্রিন্ট করে লাইন শেষ করে দিচ্ছে।
 
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+int main() {
+    // Name বাঁ-পাশে (left), ID এবং Number ডান-পাশে (right) অ্যালাইন করা হলো
+    std::cout << std::left << std::setw(12) << "Name" 
+              << std::right << std::setw(8) << "ID" 
+              << std::right << std::setw(15) << "Number\n";
+              
+    std::cout << std::left << std::setw(12) << "Abdullah" 
+              << std::right << std::setw(8) << 2389 
+              << std::right << std::setw(15) << "01745677826\n";
+              
+    std::cout << std::left << std::setw(12) << "Aziz" 
+              << std::right << std::setw(8) << 2395 
+              << std::right << std::setw(15) << "01745677826\n";
+              
+    std::cout << std::left << std::setw(12) << "Ebny" 
+              << std::right << std::setw(8) << 2958 
+              << std::right << std::setw(15) << "01745677826\n";
+              
+    std::cout << std::left << std::setw(12) << "Arman" 
+              << std::right << std::setw(8) << 2354 
+              << std::right << std::setw(15) << "01745677826\n";
+              
+    return 0;
+}
+
+
+#include <iostream>
+#include <string>
+#include <limits> // std::numeric_limits ব্যবহারের জন্য
+
+int main() {
+    int id;
+    std::string name;
+
+    // ১. আইডি ইনপুট নেওয়া (ইংরেজিতে)
+    std::cout << "Enter your ID: ";
+    std::cin >> id;
+
+    // ⚠️ ইনপুট বাফার পরিষ্কার (Buffer Clear) করা
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    // ২. পূর্ণ নাম ইনপুট নেওয়া (ইংরেজিতে)
+    std::cout << "Enter your full name: ";
+    std::getline(std::cin, name);
+
+    // ৩. ফলাফল প্রিন্ট করা (ইংরেজিতে)
+    std::cout << "\n--- Input Information ---\n";
+    std::cout << "ID: " << id << "\n";
+    std::cout << "Name: " << name << "\n";
+
+    return 0;
+}
+
+কেন এই std::cin.ignore(...) ব্যবহার করা জরুরি? (ড্রায় রান ও মেকানিক্স)
+   
+১. সমস্যাটি কোথায় হয়?
+
+যখন std::cin >> id; লিখে কিবোর্ডে আপনার আইডি (যেমন: 2389) টাইপ করে Enter চাপেন, তখন কম্পিউটার 2389 সংখ্যাটি id ভেরিয়েবলে রেখে দেয়।
+
+কিন্তু  যে Enter কী প্রেস করা হবে, সেটির রিপ্রেজেন্টেশন হিসেবে একটি নিউলাইন ক্যারেক্টার (\n) ইনপুট বাফারে রয়ে যায়।
+
+২. বাফার পরিষ্কার না করলে কী হতো?
+
+যদি std::cin.ignore না দেওয়া হত, তবে পরবর্তী std::getline(std::cin, name); 
+   
+লাইনটি রান হওয়ামাত্র বাফারে পড়ে থাকা ওই ফেলে দেওয়া \n (Enter) ক্যারেক্টারটিকে ধরে নিত।
+
+ফলে প্রোগ্রাম মনে করত ইউজার বুঝি কিছু না লিখে শুধু এন্টার চাপছে, এবং নাম নেওয়ার সুযোগ না দিয়েই ফাঁকা রেখেই সামনে চলে যেত!
+
+৩. std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); কোডটি আসলে কী করে?
+
+এটি কম্পিউটারকে নির্দেশ দেয়: "বাফারের ভেতরে যত জঞ্জাল বা নিউলাইন (\n) ক্যারেক্টার জমে আছে,
+তার সর্বোচ্চ সাইজ (max) পর্যন্ত সব মুছে বা স্কিপ করে একদম বাফার পরিষ্কার করে ফেলো, যতক্ষণ না নতুন লাইনের (\n) দেখা পাচ্ছো।"
+
+
+   
+এখানে cin বলতে C++ ল্যাঙ্গুয়েজের ইনপুট অবজেক্টকে বোঝানো হয়েছে।
+
+cin কী?
+   
+cin এর পূর্ণরূপ হলো "character input"। এটি C++ এর <iostream> স্ট্যান্ডার্ড লাইব্রেরির একটি প্রি-ডিফাইন্ড অবজেক্ট (Predefined Object),
+যা মূলত কিবোর্ড থেকে ইউজারের দেওয়া ইনপুট গ্রহণ করার জন্য ব্যবহার করা হয়।
+
+C++ এ আউটপুট দেখানোর জন্য যেমন cout ব্যবহার করা হয়, ঠিক তেমনি ইনপুট নেওয়ার জন্য cin ব্যবহার করা হয়।
+
+এটি সাধারণত Extraction Operator (>>)-এর সাথে কাজ করে।
+
+
+
+#include <iostream>
+#include <iomanip> // setw, left, right, fixed, setprecision এর জন্য
+#include <string>
+#include <limits>  // std::numeric_limits ব্যবহারের জন্য (buffer clear করতে লাগবে)
+
+int main() {
+    int id;
+    std::string name, gmail, bloodGroup;
+    bool isMarried;
+    double accountBalance;
+    float cgpa, height;
+
+    // ১. প্রথমে cin >> দিয়ে কিছু সংখ্যা বা ডেটা ইনপুট নেওয়া
+    std::cout << "Enter ID: ";
+    std::cin >> id;
+
+    std::cout << "Enter Account Balance: ";
+    std::cin >> accountBalance;
+
+    std::cout << "Enter CGPA: ";
+    std::cin >> cgpa;
+
+    std::cout << "Are you married? (1 for true, 0 for false): ";
+    std::cin >> isMarried;
+
+    // ⚠️ অত্যন্ত গুরুত্বপূর্ণ: cin >> ব্যবহারের পর যখনই std::getline দিয়ে নাম ইনপুট নিতে হবে,
+    // ঠিক তার আগে এই লাইনটি দিয়ে ইনপুট বাফার পরিষ্কার করতে হবে!
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    // ২. এবার getline দিয়ে স্পেসসহ নাম ইনপুট নেওয়া
+    std::cout << "Enter Full Name: ";
+    std::getline(std::cin, name);
+
+    std::cout << "Enter Gmail: ";
+    std::cin >> gmail;
+
+    std::cout << "Enter Blood Group: ";
+    std::cin >> bloodGroup;
+
+    std::cout << "Enter Height: ";
+    std::cin >> height;
+
+    // ৩. ফরম্যাটেড আউটপুট সেকশন (left, right, setw, fixed ব্যবহার করে)
+    std::cout << "\n\n";
+    std::cout << "------------USER INFORMATION------------- \n";
+
+
+    // টেবিলের হেডার
+    std::cout << std::left << std::setw(18) << "Field Name" 
+              << std::right << std::setw(20) << "Details\n";
+    std::cout << "----------------------------------------\n";
+
+    // ডেটাগুলো প্রিন্ট করা
+    std::cout << std::left << std::setw(18) << "ID" 
+              << std::right << std::setw(20) << id << "\n";
+
+    std::cout << std::left << std::setw(18) << "Name" 
+              << std::right << std::setw(20) << name << "\n";
+
+    std::cout << std::left << std::setw(18) << "Gmail" 
+              << std::right << std::setw(20) << gmail << "\n";
+
+    std::cout << std::left << std::setw(18) << "Blood Group" 
+              << std::right << std::setw(20) << bloodGroup << "\n";
+
+    std::cout << std::left << std::setw(18) << "Is Married" 
+              << std::right << std::setw(20) << (isMarried ? "Yes" : "No") << "\n";
+
+    std::cout << std::left << std::setw(18) << "Account Balance" 
+              << std::right << std::fixed << std::setprecision(2) << std::setw(20) << accountBalance << "\n";
+
+    std::cout << std::left << std::setw(18) << "CGPA" 
+              << std::right << std::fixed << std::setprecision(2) << std::setw(20) << cgpa << "\n";
+
+    std::cout << std::left << std::setw(18) << "Height" 
+              << std::right << std::fixed << std::setprecision(2) << std::setw(20) << height << "\n";
+
+    std::cout << "========================================\n";
+
+    return 0;
+}
+
+
+
+   
 
 #include <iostream>
 #include <iomanip>
@@ -299,7 +600,8 @@ setfill('='): এটি বলে দেয় যে, setw(40) দিয়ে তৈ
 
 << "": এটি একটি খালি স্ট্রিং। যেহেতু setw() এর পরে কিছু একটা প্রিন্ট করতে হয়, আমরা খালি স্ট্রিং দিয়েছি যাতে পুরো ৪০টি ঘরই = দিয়ে ভরে যায়।
 
-setfill(' '): এটি খুব গুরুত্বপূর্ণ! এর কাজ হলো setfill-কে আবার ডিফল্ট অবস্থায় অর্থাৎ স্পেস (Space)-এ ফিরিয়ে আনা। এটি না করলে পরের লাইনগুলোতেও সব ফাঁকা জায়গায় = চলে আসতো।
+setfill(' '): এটি খুব গুরুত্বপূর্ণ! এর কাজ হলো setfill-কে আবার ডিফল্ট অবস্থায় অর্থাৎ স্পেস (Space)-এ ফিরিয়ে আনা।
+এটি না করলে পরের লাইনগুলোতেও সব ফাঁকা জায়গায় = চলে আসতো।
    
 
 লাইন ৩: cout << left << setw(20) << "Name" << setw(15) << "ID" << "Phone Number" << endl;
