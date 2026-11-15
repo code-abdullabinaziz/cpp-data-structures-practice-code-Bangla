@@ -132,7 +132,7 @@ cout এবং << অপারেটর ব্যবহার করে খু�
 
 
 
-    #include <iostream>
+#include <iostream>
 #include <vector>
 #include <string>
 
@@ -166,7 +166,7 @@ int main() {
     return 0;
 }
 
-
+cout বা cin কোনো বিল্ট-ইন কিওয়ার্ড নয়, এগুলো হলো std (Standard) নামের একটি নেমস্পেসের (Namespace) ভেতর থাকা অবজেক্ট।
 
 
 
@@ -602,7 +602,8 @@ int main() {
     
     std::cout << "--------Student Information--------\n";
     
-    // std::left, std::right এবং std::setw ব্যবহার করে টেবিল ফরম্যাটে প্রিন্ট করা হচ্ছে
+    std::left, std::right এবং std::setw ব্যবহার করে টেবিল ফরম্যাটে প্রিন্ট করা হচ্ছে 
+
     std::cout << std::left << std::setw(12) << "Name:" << " | " << std::right << std::setw(10) << name << "\n";
     std::cout << std::left << std::setw(12) << "Age:" << " | " << std::right << std::setw(10) << age << "\n";
     std::cout << std::left << std::setw(12) << "Height:" << " | " << std::right << std::setw(10) << std::fixed << std::setprecision(1) << height << "\n";
@@ -625,7 +626,7 @@ int main() {
 #include <iomanip> // setw এবং alignment এর জন্য
 #include <string>  // string রিপিট করার জন্য (std::string(count, char))
 
-int main(){
+    int main(){
     std::string myName = "Abdullah";
     int age = 30;
     float height = 5.220f;
