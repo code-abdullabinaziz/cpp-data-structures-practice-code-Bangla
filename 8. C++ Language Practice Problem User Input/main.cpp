@@ -1,19 +1,24 @@
 #include <iostream>
+#include <string> // string ব্যবহারের জন্য এটি জরুরি
 using namespace std;
-int main(){
+
+int main() {
 
    int num;
    cout << "Enter Your Number: ";
    cin >> num;
-   cout << "You entered: " << num <<endl;
+   cout << "You entered: " << num << endl;
 
    int a, b, sum;
    cout << "Type a Number: ";
-   cin >> a ;
+   cin >> a;
    cout << "Type another Number: ";
    cin >> b;
    sum = a + b;
-   cout << "Sum is:" <<sum <<endl;
+   cout << "Sum is: " << sum << endl;
+
+   // cin >> এর পর getline আসার কারণে বাফার পরিষ্কার করার জন্য এটি আবশ্যক
+   cin.ignore(); 
 
    string name;
    int age;
@@ -21,32 +26,132 @@ int main(){
    getline(cin, name);
    cout << "Enter Your Age: ";
    cin >> age;
-   cout << "Hello " << name << ", your age is " << age <<endl;
+   cout << "Hello " << name << ", your age is " << age << endl;
 
    int length, width;
    cout << "Enter your length: ";
    cin >> length;
    cout << "Enter your width: ";
    cin >> width;
-   cout << "Area = " << length * width <<endl;
+   cout << "Area = " << length * width << endl;
 
-   int a, b, c;
-   float average;
+   // আগের a, b আবার নতুন করে ডিক্লেয়ার না করে শুধু c ডিক্লেয়ার করা হলো (এরর এড়াতে)
+   int c;
    cout << "1st Person: ";
    cin >> a;
    cout << "2nd Person: ";
    cin >> b;
    cout << "3rd Person: ";
    cin >> c;
-   average = (a + b + c) / 3.0;
-   cout << "Average = " << average <<endl;
+   float average = (a + b + c) / 3.0;
+   cout << "Average = " << average << endl;
    
    bool isRaining;
    cout << "Is it raining ? (1 Yes, 0 No): ";
    cin >> isRaining;
-   cout << "Is it raining: " <<isRaining <<endl;
+   cout << "Is it raining: " << isRaining << endl;
+
    return 0;
 }
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <limits>
+
+// ইনপুট বাফার পরিষ্কার করার প্রফেশনাল ফাংশন
+void clearInputBuffer() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+int main() {
+    // ১. সিঙ্গেল নাম্বার ইনপুট
+    int number;
+    std::cout << "Enter Your Number: ";
+    std::cin >> number;
+    std::cout << "You entered: " << number << "\n\n";
+
+    // ২. দুটি সংখ্যার যোগফল (ভেরিয়েবলের নাম ইউনিক করা হয়েছে)
+    int firstNum;
+    int secondNum;
+    int sum;
+    
+    std::cout << "Type a Number: ";
+    std::cin >> firstNum;
+    std::cout << "Type another Number: ";
+    std::cin >> secondNum;
+    
+    sum = firstNum + secondNum;
+    std::cout << "Sum is: " << sum << "\n\n";
+
+    // `cin >>` এর পর `getline` ব্যবহারের আগে অবশ্যই বাফার পরিষ্কার করতে হবে
+    clearInputBuffer();
+
+    // ৩. নাম এবং বয়স ইনপুট (getline ব্যবহার)
+    std::string name;
+    int age;
+    
+    std::cout << "Enter Your Name: ";
+    std::getline(std::cin, name);
+    std::cout << "Enter Your Age: ";
+    std::cin >> age;
+    std::cout << "Hello " << name << ", your age is " << age << "\n\n";
+
+    // ৪. আয়তক্ষেত্রের ক্ষেত্রফল নির্ণয়
+    int length;
+    int width;
+    
+    std::cout << "Enter your length: ";
+    std::cin >> length;
+    std::cout << "Enter your width: ";
+    std::cin >> width;
+    std::cout << "Area = " << length * width << "\n\n";
+
+    // ৫. তিন জনের গড় নির্ণয় (ভেরিয়েবল রী-ডিক্লেয়রেশন এরর ঠিক করা হয়েছে)
+    int p1;
+    int p2;
+    int p3;
+    double average; // আধুনিক প্র্যাকটিসে float এর বদলে double ব্যবহার করা ভালো
+    
+    std::cout << "1st Person: ";
+    std::cin >> p1;
+    std::cout << "2nd Person: ";
+    std::cin >> p2;
+    std::cout << "3rd Person: ";
+    std::cin >> p3;
+    
+    // সঠিক ফলাফল পাওয়ার জন্য static_cast ব্যবহার করা হয়েছে
+    average = static_cast<double>(p1 + p2 + p3) / 3.0;
+    std::cout << "Average = " << average << "\n\n";
+    
+    // ৬. বুলিয়ান ইনপুট
+    bool isRaining;
+    std::cout << "Is it raining? (1 Yes, 0 No): ";
+    std::cin >> isRaining;
+    
+    // 0/1 এর বদলে true/false দেখানোর জন্য std::boolalpha ব্যবহার
+    std::cout << std::boolalpha;
+    std::cout << "Is it raining: " << isRaining << "\n";
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
 
 
 #include <iostream>
@@ -64,6 +169,41 @@ int main()
 }
 
 
+
+
+#include <iostream>
+
+int main()
+{
+    int x, y, sum;
+    
+    std::cout << "Type a number: ";
+    std::cin >> x;
+    
+    std::cout << "Type another number: ";
+    std::cin >> y;
+    
+    sum = x + y;
+    
+    // std::endl এর বদলে \n ব্যবহার করা হয়েছে (যা দ্রুততর এবং প্রফেশনাল)
+    std::cout << "Type first number: " << x << "\n" 
+              << "And Type second number: " << y << "\n" 
+              << "Sum is: " << sum << "\n";
+              
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -77,6 +217,28 @@ int main(){
      return 0;
 }
 
+
+
+#include <iostream>
+#include <string>
+
+int main() {
+    int num1, num2;
+    
+    std::cout << "Enter first integer number: ";
+    std::cin >> num1;
+    
+    std::cout << "Enter second integer number: ";
+    std::cin >> num2;
+    
+    std::cout << "Numbers are: " << "Num1 " << num1 << " And Num2 " << num2 << std::endl;
+    
+    return 0;
+}
+
+
+
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -87,6 +249,25 @@ int main(){
      cout << "Numbers are: " << "Num1 "  <<num1 << " And Num2 " <<num2 <<endl;
      return 0;
 }
+
+
+#include <iostream>
+#include <string>
+
+int main() {
+     int num1, num2;
+     
+     std::cout << "Enter two integer number (space): ";
+     std::cin >> num1 >> num2;
+     
+     std::cout << "Numbers are: " << "Num1 " << num1 << " And Num2 " << num2 << std::endl;
+     
+     return 0;
+}
+
+
+
+
 
 #include <iostream>
 #include <string>
@@ -107,24 +288,27 @@ int main(){
 }
 
 
+#include <iostream>
+#include <string>
+
+int main() {
+     int num1, num2, sum;
+
+     std::cout << "Enter first integer number: ";
+     std::cin >> num1;
+
+     std::cout << "Enter second integer number: ";
+     std::cin >> num2;
+
+     sum = num1 + num2;
+
+     std::cout << "Num1 is: " << num1 << " And Num2 is: " << num2 << " Total is: " << sum << "\n";
+               
+     return 0;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -222,6 +406,109 @@ int main() {
     cout << setw(COL_WIDTH) << "Passed Status"     << ": " << isPassed << endl;
     cout << setw(COL_WIDTH) << "Graduation Status" << ": " << isGraduated << endl;
     cout << "---------------------------------------------" << endl;
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <limits>
+
+// প্রফেশনাল উইডথ ম্যানেজমেন্ট
+const int COL_WIDTH = 25;
+
+// ইনপুট বাফার এবং এরর স্টেট পরিষ্কার করার ফাংশন
+void clearInputBuffer() {
+    std::cin.clear(); 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+int main() {
+    // ভেরিয়েবল ডিক্লেয়ারেশন (std:: ব্যবহার করে)
+    std::string name, village, subject, gmail, phoneNumber, bloodGroup;
+    const std::string COUNTRY = "Bangladesh";
+
+    int age;
+    char grade;
+    double height; 
+    double accountBalance;
+    bool isPassed, isGraduated, married;
+
+    // --- ইউজার ইনপুট অংশ ---
+
+    std::cout << "Enter your name: ";
+    std::getline(std::cin, name);
+
+    std::cout << "Enter your age: ";
+    std::cin >> age;
+    // cin >> এর ঠিক পরেই getline থাকায় বাফার ক্লিয়ার করা হলো
+    clearInputBuffer();
+
+    std::cout << "Enter your height: ";
+    std::cin >> height;
+    // cin >> এর ঠিক পরেই getline থাকায় বাফার ক্লিয়ার করা হলো
+    clearInputBuffer();
+
+    std::cout << "Enter your village: ";
+    std::getline(std::cin, village);
+
+    std::cout << "Enter your subject: ";
+    std::getline(std::cin, subject);
+
+    std::cout << "Enter your account balance: ";
+    std::cin >> accountBalance;
+    // cin >> এর ঠিক পরেই getline থাকায় বাফার ক্লিয়ার করা হলো
+    clearInputBuffer();
+
+    std::cout << "Enter your gmail: ";
+    std::getline(std::cin, gmail);
+
+    std::cout << "Enter your phone number: ";
+    std::getline(std::cin, phoneNumber);
+
+    std::cout << "Enter your blood group: ";
+    std::getline(std::cin, bloodGroup);
+
+    std::cout << "Are you married (1 for Yes, 0 for No): ";
+    std::cin >> married;
+
+    std::cout << "Enter your grade: ";
+    std::cin >> grade;
+
+    std::cout << "Are you passed (1 for true, 0 for false): ";
+    std::cin >> isPassed;
+
+    std::cout << "Are you graduated (1 for true, 0 for false): ";
+    std::cin >> isGraduated;
+
+    // কোডের শেষে বাফার পরিষ্কার রাখা ভালো অভ্যাস
+    clearInputBuffer();
+
+    // --- আউটপুট প্রেজেন্টেশন ---
+    std::cout << std::endl;
+    std::cout << "------------ Student Information ------------" << std::endl;
+
+    // গ্লোবাল আউটপুট ফরম্যাটিং
+    std::cout << std::left << std::boolalpha;
+
+    std::cout << std::setw(COL_WIDTH) << "Name"              << ": " << name << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Age"               << ": " << age << " Years" << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Height"            << ": " << std::fixed << std::setprecision(1) << height << " ft" << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Village"           << ": " << village << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Subject"           << ": " << subject << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Account Balance"     << ": $" << std::fixed << std::setprecision(2) << accountBalance << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Gmail"             << ": " << gmail << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Phone Number"      << ": " << phoneNumber << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Country"           << ": " << COUNTRY << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Blood Group"       << ": " << bloodGroup << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Married Status"    << ": " << (married ? "Yes" : "No") << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Grade"             << ": " << grade << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Passed Status"     << ": " << isPassed << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Graduation Status" << ": " << isGraduated << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
 
     return 0;
 }
@@ -375,3 +662,115 @@ C++ এ কম্পাইলার উপর থেকে নিচে কো�
 ২. এটি প্রফেশনাল?
 যেকোনো বড় প্রজেক্টে গ্লোবাল কনস্ট্যান্ট (যেমন  COL_WIDTH) এবং ইউটিলিটি ফাংশন (যেমন clearInputBuffer) সবার উপরে রাখা হয়। 
 এতে কোড অনেক বেশি গোছানো থাকে এবং অন্য কোনো ফাংশন থেকেও চাইলে সেটিকে ব্যবহার করা যায়।
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <limits>
+
+// প্রফেশনাল উইডথ ম্যানেজমেন্ট
+const int COL_WIDTH = 25;
+
+// ইনপুট বাফার এবং এরর স্টেট পরিষ্কার করার স্ট্যান্ডার্ড ফাংশন
+void clearInputBuffer() {
+    std::cin.clear(); 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+int main() {
+    // ভেরিয়েবল ডিক্লেয়ারেশন
+    std::string name, village, subject, gmail, phoneNumber, bloodGroup;
+    const std::string COUNTRY = "Bangladesh";
+
+    int age;
+    char grade;
+    double height; 
+    double accountBalance;
+    bool isPassed, isGraduated, married;
+
+    // --- ইউজার ইনপুট অংশ ---
+
+    std::cout << "Enter your name: ";
+    std::getline(std::cin, name);
+
+    // বয়স ইনপুট ভ্যালিডেশন
+    std::cout << "Enter your age: ";
+    while (!(std::cin >> age)) { 
+        std::cout << "Invalid input! Please enter a numeric age: ";
+        clearInputBuffer();
+    }
+
+    std::cout << "Enter your height: ";
+    while (!(std::cin >> height)) {
+        std::cout << "Invalid input! Please enter height in numbers: ";
+        clearInputBuffer();
+    }
+
+    // getline এর আগে বাফার ক্লিয়ার করা বাধ্যতামূলক
+    clearInputBuffer();
+
+    std::cout << "Enter your village: ";
+    std::getline(std::cin, village);
+
+    std::cout << "Enter your subject: ";
+    std::getline(std::cin, subject);
+
+    std::cout << "Enter your account balance: ";
+    while (!(std::cin >> accountBalance)) {
+        std::cout << "Invalid input! Please enter balance in numbers: ";
+        clearInputBuffer();
+    }
+
+    clearInputBuffer();
+
+    std::cout << "Enter your gmail: ";
+    std::getline(std::cin, gmail);
+
+    std::cout << "Enter your phone number: ";
+    std::getline(std::cin, phoneNumber);
+
+    std::cout << "Enter your blood group: ";
+    std::getline(std::cin, bloodGroup);
+
+    std::cout << "Are you married (1 for Yes, 0 for No): ";
+    while (!(std::cin >> married)) {
+        std::cout << "Invalid! Enter 1 for Yes or 0 for No: ";
+        clearInputBuffer();
+    }
+
+    std::cout << "Enter your grade: ";
+    std::cin >> grade;
+
+    std::cout << "Are you passed (1 for true, 0 for false): ";
+    std::cin >> isPassed;
+
+    std::cout << "Are you graduated (1 for true, 0 for false): ";
+    std::cin >> isGraduated;
+
+    clearInputBuffer();
+  
+    std::cout << std::endl;
+    std::cout << "------------ Student Information ------------" << std::endl;
+
+    std::cout << std::left << std::boolalpha;
+
+    std::cout << std::setw(COL_WIDTH) << "Name"              << ": " << name << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Age"               << ": " << age << " Years" << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Height"            << ": " << std::fixed << std::setprecision(1) << height << " ft" << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Village"           << ": " << village << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Subject"           << ": " << subject << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Account Balance"     << ": $" << std::fixed << std::setprecision(2) << accountBalance << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Gmail"             << ": " << gmail << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Phone Number"      << ": " << phoneNumber << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Country"           << ": " << COUNTRY << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Blood Group"       << ": " << bloodGroup << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Married Status"    << ": " << (married ? "Yes" : "No") << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Grade"             << ": " << grade << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Passed Status"     << ": " << isPassed << std::endl;
+    std::cout << std::setw(COL_WIDTH) << "Graduation Status" << ": " << isGraduated << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
+
+    return 0;
+}
