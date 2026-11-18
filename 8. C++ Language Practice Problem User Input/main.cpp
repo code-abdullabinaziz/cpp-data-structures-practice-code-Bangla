@@ -9,6 +9,9 @@ int main() {
    cin >> num;
    cout << "You entered: " << num << endl;
 
+
+
+   
    int a, b, sum;
    cout << "Type a Number: ";
    cin >> a;
@@ -17,9 +20,15 @@ int main() {
    sum = a + b;
    cout << "Sum is: " << sum << endl;
 
+
+
+   
    // cin >> এর পর getline আসার কারণে বাফার পরিষ্কার করার জন্য এটি আবশ্যক
    cin.ignore(); 
 
+
+
+   
    string name;
    int age;
    cout << "Enter Your Name: ";
@@ -28,6 +37,9 @@ int main() {
    cin >> age;
    cout << "Hello " << name << ", your age is " << age << endl;
 
+
+
+   
    int length, width;
    cout << "Enter your length: ";
    cin >> length;
@@ -35,16 +47,28 @@ int main() {
    cin >> width;
    cout << "Area = " << length * width << endl;
 
+
+
+   
    // আগের a, b আবার নতুন করে ডিক্লেয়ার না করে শুধু c ডিক্লেয়ার করা হলো (এরর এড়াতে)
-   int c;
-   cout << "1st Person: ";
-   cin >> a;
-   cout << "2nd Person: ";
-   cin >> b;
-   cout << "3rd Person: ";
-   cin >> c;
-   float average = (a + b + c) / 3.0;
-   cout << "Average = " << average << endl;
+   
+    int a, b, c;
+    
+    cout << "1st Person: ";
+    cin >> a;
+    
+    cout << "2nd Person: ";
+    cin >> b;
+    
+    cout << "3rd Person: ";
+    cin >> c;
+    
+    float average = (a + b + c) / 3.0;
+    cout << "Average = " << average << endl;
+
+
+
+
    
    bool isRaining;
    cout << "Is it raining ? (1 Yes, 0 No): ";
@@ -57,7 +81,61 @@ int main() {
 
 
 
+#include <iostream>
+#include <iomanip> // দশমিকের পর নির্দিষ্ট ঘর দেখানোর জন্য
 
+int main() {
+    // ১. প্রতিটি ভেরিয়েবল আলাদা লাইনে ডিক্লেয়ারেশন
+    int firstPerson;
+    int secondPerson;
+    int thirdPerson;
+    double average; // নিখুঁত দশমিক হিসাবের জন্য double ব্যবহার করা উত্তম
+
+    // ২. ইউজার ইনপুট সেকশন
+    std::cout << "1st Person: ";
+    std::cin >> firstPerson;
+
+    std::cout << "2nd Person: ";
+    std::cin >> secondPerson;
+
+    std::cout << "3rd Person: ";
+    std::cin >> thirdPerson;
+
+    // ৩. গড় নির্ণয় (টাইপ কাস্টিং ব্যবহার করে)
+    average = static_cast<double>(firstPerson + secondPerson + thirdPerson) / 3.0;
+
+    // ৪. আউটপুট (দশমিকের পর ২ ঘর পর্যন্ত নিখুঁত ফলাফল)
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Average = " << average << "\n";
+
+    return 0;
+}
+
+
+static_cast<double> কী?
+   
+সহজ ভাষায়, এটি হলো মডার্ন C++-এর Explicit Type Casting বা জোরপূর্বক ডেটা টাইপ রূপান্তর করার নিরাপদ পদ্ধতি।
+
+কেন এটি দরকার?
+
+ firstPerson, secondPerson, এবং thirdPerson—এই তিনটি ভেরিয়েবলই পূর্ণসংখ্যা (int)। যখন তিনটি int যোগ করা হয়, 
+তখন কম্পাইলার মেমোরিতে একটি int ফলাফলই তৈরি করে।
+
+static_cast<double>(...) লেখার মাধ্যমে আপনি কম্পাইলারকে স্পষ্টভাবে নির্দেশ দিচ্ছেন: "ভেতরের এই পূর্ণসংখ্যা যোগফলটিকে এখন একটি দশমিক সংখ্যা (double)-এ রূপান্তর করো,
+যাতে ভাগ করার সময় দশমিকের পরের কোনো মান হারিয়ে না যায়।"
+
+আগে কীভাবে লেখা হতো?
+পুরনো C বা C++ স্টাইলে আমরা লিখতাম (double)(a + b + c)। কিন্তু বড় প্রজেক্টে বা মডার্ন C++-এ (double) ব্যবহার করা অনিরাপদ ধরা হয়,
+কারণ এটি যেকোনো ভুল কনভার্সনকেও জোর করে করে ফেলে। পক্ষান্তরে, static_cast<double> 
+কম্পাইল করার সময়ই চেক করে যে রূপান্তরটি বৈধ কি না—তাই এটি শতভাগ টাইপ-সেফ এবং ইন্ডাস্ট্রি স্ট্যান্ডার্ড।
+
+average = static_cast<double>(firstPerson + secondPerson + thirdPerson) / 3.0;
+
+যোগফল: ব্র্যাকেটের ভেতরের তিনটি int যোগ হয়: 10 + 20 + 25 = 55 (এটি এখনো int)।
+
+রূপান্তর (static_cast<double>): 55 সংখ্যাটি রূপান্তরিত হয়ে 55.0 (double)-এ পরিণত হয়।
+
+ভাগ: 55.0 / 3.0 ভাগ হয়ে ফলাফল আসে 18.333333333333332, যা average ভেরিয়েবলে স্টোর হয়।
 
 
 
